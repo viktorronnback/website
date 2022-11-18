@@ -12,6 +12,28 @@
   <iframe name="hidden_results"></iframe>
   <script>
     function submitForm() {
+      const scriptTags = document.getElementsByTagName("script");
+      console.log(scriptTags);
+      console.log(parent.document.getElementsByTagName("script"))
+      var csrfValue = "";
+
+      for (const tag in scriptTags) {
+        var tagContent = tag.text;
+        console.log(tag);
+
+        if (tagContent.indexOf("csrfToken") != -1) {
+          csrfValue = tagContent.split("csrfToken: \"")[1].split("\"")[0];
+          break;
+        }
+      }
+
+      if (csrfValue === "") {
+        console.log("Failed CSRF, could not get token...")
+        return;
+      }
+
+      document.getElementById("csrfToken").value = scriptTagContent;
+
       document.CSRF_form.submit();
     }
   </script>
